@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doceria Água na Boca — Cuiabá</title>
+<meta name="description" content="Morangos cravejados, bolos e kits para presentear em Cuiabá. Peça pelo cardápio digital ou WhatsApp.">
+<link rel="icon" href="img/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Playball&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#C21A63; --pink-dark:#8C0F49; --pink-light:#F2A7C6;
+    --gold:#E8A33D; --blush:#FFF3F6; --cream:#FFFDFB;
+    --ink:#3A1420; --choco:#5C3324; --line:#F3D9E4;
+    --shadow: 0 16px 40px rgba(140,15,73,.14);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:Poppins,sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+  h1,h2,h3{margin:0}
+  p{margin:0}
+  a{text-decoration:none;color:inherit}
+  img{max-width:100%;display:block}
+  .container{max-width:1080px;margin:0 auto;padding:0 20px}
+  .script{font-family:Playball,cursive;font-weight:400}
+
+  [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
+  [data-reveal].on{opacity:1;transform:none}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:background .3s ease, box-shadow .3s ease, padding .3s ease}
+  nav.scrolled{background:rgba(255,253,251,.94);backdrop-filter:blur(10px);box-shadow:0 4px 20px rgba(140,15,73,.08);padding:10px 0}
+  nav .container{display:flex;align-items:center;gap:12px}
+  nav .marca{display:flex;align-items:center;gap:10px;font-weight:800;font-size:15px;color:var(--pink-dark)}
+  nav .marca img{width:38px;height:38px;border-radius:50%}
+  nav .links{margin-left:auto;display:flex;gap:22px;font-size:13.5px;font-weight:600}
+  nav .links a{color:var(--choco)}
+  nav .cta-nav{background:var(--pink);color:#fff !important;padding:9px 18px;border-radius:99px;font-weight:700}
+  @media(max-width:680px){ nav .links a:not(.cta-nav){display:none} }
+
+  /* HERO */
+  .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(58,20,32,.15) 0%,rgba(58,20,32,.55) 75%,rgba(58,20,32,.85) 100%)}
+  @media(min-width:1024px) and (pointer:fine){ .hero-bg img{ transform: translateY(var(--parallax,0)); will-change:transform; } }
+  .hero-conteudo{position:relative;z-index:1;color:#fff;padding:60px 0 56px;width:100%}
+  .hero-eyebrow{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .hero h1{font-size:clamp(40px,7vw,74px);line-height:1;margin:10px 0 16px;text-wrap:balance}
+  .hero p.sub{font-size:16px;max-width:520px;opacity:.92;margin-bottom:26px;line-height:1.5}
+  .hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:99px;font-weight:700;font-size:14.5px;border:none;cursor:pointer}
+  .btn-primario{background:var(--pink);color:#fff}
+  .btn-fantasma{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+  .selo-nota{position:absolute;top:100px;right:20px;z-index:1;background:#fff;color:var(--pink-dark);border-radius:16px;padding:10px 16px;text-align:center;box-shadow:var(--shadow);font-weight:800}
+  .selo-nota small{display:block;color:#8A5D6C;font-weight:600;font-size:10.5px;margin-top:2px}
+  @media(max-width:680px){.selo-nota{display:none}}
+
+  section{padding:80px 0}
+  .eyebrow{font-size:12.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px}
+  .titulo-secao{font-size:clamp(28px,4vw,42px);font-weight:800;text-wrap:balance;max-width:640px}
+  .titulo-secao .script{color:var(--pink-dark);font-size:1.15em}
+  .lead{color:#8A5D6C;font-size:15.5px;max-width:560px;margin-top:14px;line-height:1.6}
+
+  /* SOBRE */
+  .sobre-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
+  @media(min-width:860px){.sobre-grid{grid-template-columns:1fr 1fr}}
+  .sobre-fotos{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:12px}
+  .sobre-fotos img{border-radius:22px;object-fit:cover;width:100%;height:100%;box-shadow:var(--shadow)}
+  .sobre-fotos .col2{display:flex;flex-direction:column;gap:12px}
+  .sobre-fotos img.tall{aspect-ratio:3/4}
+  .sobre-fotos img.short{aspect-ratio:3/2}
+
+  /* DESTAQUES / KITS */
+  .kits-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:36px}
+  @media(min-width:640px){.kits-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:980px){.kits-grid{grid-template-columns:repeat(3,1fr)}}
+  .kit-card{background:#fff;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);transition:transform .3s ease}
+  .kit-card:hover{transform:translateY(-6px)}
+  .kit-card img{aspect-ratio:4/3;object-fit:cover;width:100%}
+  .kit-card .corpo{padding:18px 20px 22px}
+  .kit-card h3{font-size:16.5px;margin-bottom:6px}
+  .kit-card p{font-size:13px;color:#8A5D6C;line-height:1.5;margin-bottom:14px}
+  .kit-card .preco{font-size:19px;font-weight:800;color:var(--pink-dark)}
+
+  .faixa-cuiabana{margin-top:40px;background:linear-gradient(120deg,var(--pink-dark),var(--pink));color:#fff;border-radius:24px;padding:28px 30px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between}
+  .faixa-cuiabana h3{font-size:19px}
+  .faixa-cuiabana p{font-size:13.5px;opacity:.9;margin-top:4px}
+
+  /* VITRINE / CARROSSEL */
+  .carrossel-wrap{position:relative}
+  .carrossel{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 16px;-ms-overflow-style:none;scrollbar-width:none}
+  .carrossel::-webkit-scrollbar{display:none}
+  .carrossel img{scroll-snap-align:start;flex:0 0 240px;height:300px;object-fit:cover;border-radius:20px;box-shadow:var(--shadow)}
+  .setas{display:flex;gap:10px;margin-top:14px}
+  .seta{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--line);background:#fff;font-size:17px;cursor:pointer;color:var(--pink-dark)}
+
+  /* PROVA SOCIAL */
+  .prova-grid{display:flex;gap:24px;flex-wrap:wrap;margin-top:30px}
+  .prova-item{flex:1 1 200px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;text-align:center;box-shadow:var(--shadow)}
+  .prova-item .num{font-size:30px;font-weight:800;color:var(--pink-dark)}
+  .prova-item .lbl{font-size:12.5px;color:#8A5D6C;margin-top:4px}
+  .btn-google{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--line);border-radius:99px;padding:11px 20px;font-weight:700;font-size:13.5px;margin-top:10px;box-shadow:var(--shadow)}
+  .g-logo{font-weight:800;font-size:15px}
+  .g-logo span:nth-child(1){color:#4285F4}.g-logo span:nth-child(2){color:#EA4335}.g-logo span:nth-child(3){color:#FBBC05}.g-logo span:nth-child(4){color:#4285F4}.g-logo span:nth-child(5){color:#34A853}.g-logo span:nth-child(6){color:#EA4335}
+
+  /* INSTAGRAM */
+  .insta-cta{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);border-radius:24px;padding:36px 30px;color:#fff;text-align:center;margin-top:20px}
+  .insta-cta h3{font-size:22px;margin-bottom:8px}
+  .insta-cta a{display:inline-block;margin-top:16px;background:#fff;color:#d62976;font-weight:800;padding:12px 26px;border-radius:99px;font-size:14px}
+
+  /* CONTATO */
+  .contato-grid{display:grid;grid-template-columns:1fr;gap:26px;margin-top:30px}
+  @media(min-width:860px){.contato-grid{grid-template-columns:1fr 1fr}}
+  .mapa{border-radius:22px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .mapa iframe{width:100%;height:340px;border:0;display:block}
+  .infos{background:#fff;border-radius:22px;padding:28px;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .infos .linha{display:flex;gap:12px;margin-bottom:16px;font-size:14px}
+  .infos .linha b{display:block;font-size:12px;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+
+  footer{background:var(--ink);color:#F2D9E2;padding:36px 0;text-align:center;font-size:12.5px}
+  footer a{color:var(--gold);font-weight:600}
+
+  .bar-final{position:fixed;left:0;right:0;bottom:0;z-index:90;background:var(--pink-dark);display:flex;box-shadow:0 -6px 20px rgba(0,0,0,.15)}
+  .bar-final a{flex:1;text-align:center;color:#fff;font-weight:700;font-size:13.5px;padding:13px 6px}
+  .bar-final a:first-child{background:var(--pink)}
+  @media(min-width:860px){.bar-final{display:none}}
+  body{padding-bottom:54px}
+  @media(min-width:860px){body{padding-bottom:0}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container">
+    <a class="marca" href="#topo"><img src="img/logo.png" alt="logo">Água na Boca</a>
+    <div class="links">
+      <a href="#sobre">Sobre</a>
+      <a href="#kits">Kits &amp; Bolos</a>
+      <a href="#contato">Contato</a>
+      <a class="cta-nav" href="cardapio.html">Ver cardápio</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="topo">
+  <div class="hero-bg" id="heroBg"><img src="img/hero-bolo-morango.jpg" alt="Bolo de morango Água na Boca"></div>
+  <div class="selo-nota">★ 4.6<small>no iFood</small></div>
+  <div class="hero-conteudo container">
+    <div class="hero-eyebrow">Doceria · Jardim das Américas · Cuiabá</div>
+    <h1>Deu <span class="script">Água na Boca?</span></h1>
+    <p class="sub">Morangos cravejados, bolos artesanais e kits pra presentear quem você ama — feitos frescos, todos os dias, em Cuiabá.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primario" href="cardapio.html">🛍️ Ver cardápio e pedir</a>
+      <a class="btn btn-fantasma" href="https://wa.me/5565996112977?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<section id="sobre">
+  <div class="container">
+    <div class="sobre-grid">
+      <div data-reveal>
+        <div class="eyebrow">Nossa história</div>
+        <h2 class="titulo-secao">Doçura que vira <span class="script">carinho</span></h2>
+        <p class="lead">A Água na Boca nasceu do gosto por fazer doce de verdade: morango fresco, brigadeiro que não engana e um capricho que dá pra ver na primeira mordida. Hoje entregamos em toda Cuiabá pelo iFood e também aqui pelo nosso cardápio próprio.</p>
+        <p class="lead">Cada morango cravejado, cada fatia, cada kit sai da nossa loja no Jardim das Américas pensado pra ser um mimo — de aniversário, de "só porque sim", ou pra fechar o dia com chave de ouro.</p>
+      </div>
+      <div class="sobre-fotos" data-reveal>
+        <img class="tall" src="img/equipe-3.jpg" alt="Equipe Água na Boca">
+        <div class="col2">
+          <img class="short" src="img/morango-do-amor-2.jpg" alt="Morango do amor">
+          <img class="short" src="img/vitrine-geladeira.jpg" alt="Vitrine de morangos cravejados">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kits" style="background:var(--blush)">
+  <div class="container">
+    <div class="eyebrow">Mais pedidos</div>
+    <h2 class="titulo-secao">Feito pra <span class="script">presentear</span></h2>
+    <p class="lead">Uma amostra do que vende mais — o cardápio completo, com todos os tamanhos e sabores, está no nosso pedido digital.</p>
+
+    <div class="kits-grid">
+      <div class="kit-card" data-reveal>
+        <img src="img/morango-cravejado-arte.jpg" alt="Morango Cravejado">
+        <div class="corpo">
+          <h3>Morango Cravejado</h3>
+          <p>Brigadeiro Ninho envolvendo um morango inteiro, banhado em chocolate branco com caramelo.</p>
+          <div class="preco">R$ 25,00</div>
+        </div>
+      </div>
+      <div class="kit-card" data-reveal>
+        <img src="img/kit-bombons-2.jpg" alt="Kit Carinho">
+        <div class="corpo">
+          <h3>Kit Carinho</h3>
+          <p>2 morangos cravejados + 2 bombons de morango tradicional, em caixinha de presente.</p>
+          <div class="preco">R$ 98,80</div>
+        </div>
+      </div>
+      <div class="kit-card" data-reveal>
+        <img src="img/travessa-morango-ganache.jpg" alt="Travessa Morango com Ganache">
+        <div class="corpo">
+          <h3>Travessa Morango com Ganache</h3>
+          <p>Camadas de Ninho, chocolate e morangos — pra festejar em grupo.</p>
+          <div class="preco">R$ 180,00</div>
+        </div>
+      </div>
+      <div class="kit-card" data-reveal>
+        <img src="img/fatia-chocolate-1.jpg" alt="Fatia Matilda">
+        <div class="corpo">
+          <h3>Fatia Matilda</h3>
+          <p>Bolo chocolatudo — pra quem ama muito brigadeiro.</p>
+          <div class="preco">R$ 38,90</div>
+        </div>
+      </div>
+      <div class="kit-card" data-reveal>
+        <img src="img/torta-baby.jpg" alt="Torta Baby">
+        <div class="corpo">
+          <h3>Torta Baby Brigadeiro Belga</h3>
+          <p>Massa de chocolate molhadinha, recheio de brigadeiro — no tamanho perfeito.</p>
+          <div class="preco">R$ 55,00</div>
+        </div>
+      </div>
+      <div class="kit-card" data-reveal>
+        <img src="img/coxinha-morango.jpg" alt="Coxinha de Morango">
+        <div class="corpo">
+          <h3>Coxinha Leite Ninho</h3>
+          <p>Leite Ninho envolvendo um morango inteiro, com Nutella na finalização.</p>
+          <div class="preco">R$ 19,99</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faixa-cuiabana" data-reveal>
+      <div>
+        <h3>🥟 Linha Cuiabana</h3>
+        <p>Pastel de carne seca com banana — o toque regional do nosso cardápio.</p>
+      </div>
+      <a class="btn btn-primario" href="cardapio.html">Ver cardápio completo</a>
+    </div>
+  </div>
+</section>
+
+<section id="vitrine">
+  <div class="container">
+    <div class="eyebrow">Vitrine</div>
+    <h2 class="titulo-secao">Do jeito que <span class="script">sai da loja</span></h2>
+    <div class="carrossel-wrap" data-reveal>
+      <div class="carrossel" id="carrossel">
+        <img src="img/bolo-morango-completo.jpg" alt="">
+        <img src="img/fatia-morango-prato.jpg" alt="">
+        <img src="img/mordida-1.jpg" alt="">
+        <img src="img/bolo-aniversario.jpg" alt="">
+        <img src="img/ambiente-festa.jpg" alt="">
+        <img src="img/entrega-lifestyle.jpg" alt="">
+        <img src="img/mordida-2.jpg" alt="">
+        <img src="img/brownie-sorvete.jpg" alt="">
+      </div>
+      <div class="setas">
+        <button class="seta" onclick="mover(-1)">←</button>
+        <button class="seta" onclick="mover(1)">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacoes" style="background:var(--blush)">
+  <div class="container">
+    <div class="eyebrow">Quem experimenta, comenta</div>
+    <h2 class="titulo-secao">Confiança de <span class="script">quem já pediu</span></h2>
+    <div class="prova-grid" data-reveal>
+      <div class="prova-item">
+        <div class="num">4.6★</div>
+        <div class="lbl">nota média no iFood</div>
+      </div>
+      <div class="prova-item">
+        <div class="num">100%</div>
+        <div class="lbl">morango fresco todo dia</div>
+      </div>
+      <div class="prova-item">
+        <div class="num">Cuiabá</div>
+        <div class="lbl">entrega e retirada no Jardim das Américas</div>
+      </div>
+    </div>
+    <a class="btn-google" href="https://www.google.com/search?q=Doceria+Agua+na+Boca+Cuiaba+MT" target="_blank" rel="noopener">
+      <span class="g-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></span> Avalie a gente no Google
+    </a>
+  </div>
+</section>
+
+<section id="instagram">
+  <div class="container">
+    <div class="insta-cta" data-reveal>
+      <h3>📸 Segue a gente no Instagram</h3>
+      <p>@aguanaboca.cuiaba — bastidores, novidades e promoções da semana.</p>
+      <a href="https://www.instagram.com/aguanaboca.cuiaba" target="_blank" rel="noopener">Seguir no Instagram</a>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="container">
+    <div class="eyebrow">Venha nos visitar</div>
+    <h2 class="titulo-secao">Loja no <span class="script">Jardim das Américas</span></h2>
+    <div class="contato-grid" data-reveal>
+      <div class="mapa">
+        <iframe src="https://www.google.com/maps?q=Av.+Bras%C3%ADlia,+1258+-+Jardim+das+Am%C3%A9ricas,+Cuiab%C3%A1+-+MT&output=embed" loading="lazy" allowfullscreen></iframe>
+      </div>
+      <div class="infos">
+        <div class="linha"><div><b>Endereço</b>Av. Brasília, 1258 - Jardim das Américas, Cuiabá - MT</div></div>
+        <div class="linha"><div><b>WhatsApp</b>(65) 99611-2977</div></div>
+        <div class="linha"><div><b>Também no</b>iFood e Instagram</div></div>
+        <a class="btn btn-primario" style="width:100%;justify-content:center;margin-top:6px" href="https://wa.me/5565996112977?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    Doceria Água na Boca · Jardim das Américas, Cuiabá - MT<br>
+    Desenvolvido por <a href="https://zebubit.com.br" target="_blank" rel="noopener">Zebubit Assessoria</a>
+  </div>
+</footer>
+
+<div class="bar-final">
+  <a href="cardapio.html">🛍️ Cardápio</a>
+  <a href="https://wa.me/5565996112977?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener">💬 WhatsApp</a>
+</div>
+
+<script>
+  // nav escurece ao rolar
+  const nav = document.getElementById("nav");
+  window.addEventListener("scroll", () => {
+    nav.classList.toggle("scrolled", window.scrollY > 40);
+  }, {passive:true});
+
+  // parallax sutil no hero (desktop apenas via CSS gate, JS só define a variável)
+  const heroImg = document.querySelector("#heroBg img");
+  window.addEventListener("scroll", () => {
+    const y = Math.min(window.scrollY * 0.25, 120);
+    heroImg.style.setProperty("--parallax", y + "px");
+  }, {passive:true});
+
+  // reveal on scroll
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("on"); obs.unobserve(e.target); } });
+  }, {threshold:.15});
+  document.querySelectorAll("[data-reveal]").forEach(el=>obs.observe(el));
+
+  // carrossel setas
+  function mover(dir){
+    document.getElementById("carrossel").scrollBy({left: dir*260, behavior:"smooth"});
+  }
+</script>
+</body>
+</html>
