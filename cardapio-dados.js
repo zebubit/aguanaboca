@@ -67,9 +67,9 @@ const CARDAPIO = [
   {
     categoria: "Brownie",
     itens: [
-      { nome: "Brownie Tradicional", desc: "Sem recheio. Massa crocante e macia.", serve: "1 pessoa", preco: 18.99 },
+      { nome: "Brownie Tradicional", desc: "Sem recheio. Massa crocante e macia.", serve: "1 pessoa", preco: 18.99, img: "img/brownie-tradicional.jpg" },
       { nome: "Lasanha de Brownie", desc: "Camadas de leite Ninho, brigadeiro e morango, com calda de chocolate quentinha.", serve: "1 pessoa (dá pra dividir)", preco: 50.00, img: "img/brownie-sorvete.jpg" },
-      { nome: "Brownie Supremo de Nutella", desc: "Super recheado de Nutella.", preco: 20.00 }
+      { nome: "Brownie Supremo de Nutella", desc: "Super recheado de Nutella.", preco: 20.00, img: "img/brownie-nutella.jpg" }
     ]
   },
   {
@@ -84,6 +84,13 @@ const CARDAPIO = [
     categoria: "Bombons Mais Queridinhos",
     itens: [
       { nome: "Bombom de Morango Tradicional", desc: "Casquinha de chocolate, recheio de Ninho cremoso, morango inteiro. ~100g.", serve: "1 pessoa", preco: 22.90, img: "img/mordida-2.jpg" }
+    ]
+  },
+  {
+    categoria: "S'mores no Copo",
+    itens: [
+      { nome: "S'mores no Copo", desc: "O hype da casa. Marshmallow maçaricado, calda quente de chocolate e brownie por cima. Pra tomar aqui na loja.", serve: "1 pessoa", preco: 20.00, img: "img/smores-montagem.jpg" },
+      { nome: "S'mores pra Viagem", desc: "O mesmo S'mores, montado no copo pra levar.", serve: "1 pessoa", preco: 22.00, img: "img/smores-viagem.jpg" }
     ]
   },
   {
@@ -109,18 +116,18 @@ const CARDAPIO = [
   {
     categoria: "Bebidas",
     itens: [
-      { nome: "Suco de Morango Natural", desc: "300ml na garrafa.", serve: "1 pessoa", preco: 25.00 },
-      { nome: "Água com Gás", desc: "", preco: 8.00 },
-      { nome: "Água sem Gás", desc: "", preco: 8.00 },
-      { nome: "Coca-Cola", desc: "", preco: 8.00 },
-      { nome: "Coca-Cola Zero", desc: "", preco: 8.00 },
-      { nome: "Coca-Cola Garrafa 2L", desc: "Bem gelada.", preco: 18.00 }
+      { nome: "Suco de Morango Natural", desc: "300ml na garrafa.", serve: "1 pessoa", preco: 25.00, img: "img/suco-morango.jpg" },
+      { nome: "Água com Gás", desc: "", preco: 8.00, img: "img/agua-com-gas.jpg" },
+      { nome: "Água sem Gás", desc: "", preco: 8.00, img: "img/agua-sem-gas.jpg" },
+      { nome: "Coca-Cola", desc: "", preco: 8.00, img: "img/coca-cola.jpg" },
+      { nome: "Coca-Cola Zero", desc: "", preco: 8.00, img: "img/coca-cola-zero.jpg" },
+      { nome: "Coca-Cola Garrafa 2L", desc: "Bem gelada.", preco: 18.00, img: "img/coca-cola-2l.jpg" }
     ]
   },
   {
     categoria: "Linha Cuiabana",
     itens: [
-      { nome: "Pastel de Carne Seca com Banana", desc: "", preco: 16.00 }
+      { nome: "Pastel de Carne Seca com Banana", desc: "", preco: 16.00, img: "img/pastel-carne-seca.jpg" }
     ]
   }
 ];

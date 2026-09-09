@@ -77,6 +77,9 @@
   .sobre-fotos img{border-radius:22px;object-fit:cover;width:100%;height:100%;box-shadow:var(--shadow)}
   .sobre-fotos .col2{display:flex;flex-direction:column;gap:12px}
   .sobre-fotos img.tall{aspect-ratio:3/4}
+  .foto-equipe{margin:0;position:relative;display:block;height:100%}
+  .foto-equipe img{height:100%}
+  .foto-equipe figcaption{position:absolute;left:14px;bottom:14px;right:14px;color:#fff;font-size:27px;line-height:1;text-shadow:0 2px 14px rgba(58,20,32,.75)}
   .sobre-fotos img.short{aspect-ratio:3/2}
 
   /* DESTAQUES / KITS */
@@ -189,7 +192,10 @@
         </div>
       </div>
       <div class="sobre-fotos" data-reveal>
-        <img class="tall" src="img/taissa-familia.jpg" alt="Taissa Rocha com as filhas">
+        <figure class="foto-equipe">
+          <img class="tall" src="img/taissa-familia.jpg" alt="Taissa Rocha com as filhas">
+          <figcaption><span class="script">minha equipe</span></figcaption>
+        </figure>
         <div class="col2">
           <img class="short" src="img/dona-loja.jpg" alt="Taissa Rocha na loja da Água na Boca">
           <img class="short" src="img/vitrine-geladeira.jpg" alt="Vitrine de morangos cravejados">
@@ -272,18 +278,46 @@
     <h2 class="titulo-secao">Do jeito que <span class="script">sai da loja</span></h2>
     <div class="carrossel-wrap" data-reveal>
       <div class="carrossel" id="carrossel">
-        <img src="img/bolo-morango-completo.jpg" alt="">
-        <img src="img/fatia-morango-prato.jpg" alt="">
-        <img src="img/mordida-1.jpg" alt="">
-        <img src="img/bolo-aniversario.jpg" alt="">
-        <img src="img/ambiente-festa.jpg" alt="">
-        <img src="img/entrega-lifestyle.jpg" alt="">
-        <img src="img/mordida-2.jpg" alt="">
-        <img src="img/brownie-sorvete.jpg" alt="">
-        <img src="img/fachada.jpg" alt="">
-        <img src="img/vitrine-loja-2.jpg" alt="">
-        <img src="img/ambiente-neon.jpg" alt="">
-        <img src="img/travessa-nuvem-morango.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v01.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v02.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v03.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v04.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v05.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v06.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v07.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v08.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v09.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v10.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v11.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v12.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v13.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v14.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v15.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v16.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v17.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v18.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v19.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v20.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v21.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v22.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v23.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v24.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v25.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v26.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v27.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v28.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v29.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v30.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v31.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v32.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v33.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v34.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v35.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v36.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v37.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v38.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v39.jpg" alt="">
+        <img loading="lazy" src="img/vitrine/v40.jpg" alt="">
       </div>
       <div class="setas">
         <button class="seta" onclick="mover(-1)">←</button>
@@ -406,8 +440,48 @@
   document.querySelectorAll("[data-reveal]").forEach(el=>obs.observe(el));
 
   // carrossel setas
+  const trilho = document.getElementById("carrossel");
+  const PASSO = 256;      // largura da foto + gap
+  const INTERVALO = 3000; // 3 segundos
+
   function mover(dir){
-    document.getElementById("carrossel").scrollBy({left: dir*260, behavior:"smooth"});
+    trilho.scrollBy({left: dir*PASSO, behavior:"smooth"});
+  }
+
+  // roda sozinho, volta ao inicio no fim e pausa quando a pessoa interage
+  let girando = null, pausa = null;
+
+  // anda ate a proxima foto de verdade, senao o scroll-snap cancela a animacao
+  function girar(){
+    const esq = trilho.getBoundingClientRect().left;
+    const prox = [...trilho.children].find(el => el.getBoundingClientRect().left - esq > 12);
+    if(prox) trilho.scrollBy({left: prox.getBoundingClientRect().left - esq, behavior:"smooth"});
+    else trilho.scrollTo({left:0, behavior:"smooth"});
+  }
+
+  function ligar(){ if(!girando) girando = setInterval(girar, INTERVALO); }
+  function desligar(){ clearInterval(girando); girando = null; }
+
+  // depois de mexer, espera 6s parado e volta a girar
+  function adiar(){
+    desligar();
+    clearTimeout(pausa);
+    pausa = setTimeout(ligar, 6000);
+  }
+
+  trilho.addEventListener("pointerdown", adiar);
+  trilho.addEventListener("wheel", adiar, {passive:true});
+  trilho.addEventListener("touchstart", adiar, {passive:true});
+  trilho.addEventListener("mouseenter", desligar);
+  trilho.addEventListener("mouseleave", ligar);
+  document.querySelectorAll(".seta").forEach(b => b.addEventListener("click", adiar));
+
+  // so gira quando a secao esta na tela, e respeita quem pediu menos movimento
+  const paradinho = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(!paradinho){
+    new IntersectionObserver(es => {
+      es.forEach(e => e.isIntersecting ? ligar() : desligar());
+    }, {threshold:0.2}).observe(trilho);
   }
 </script>
 </body>
