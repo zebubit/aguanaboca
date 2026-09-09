@@ -1,4 +1,4 @@
-// Fonte única de preços e itens — cardápio, site e (futuro) bio leem daqui.
+// Fonte única de preços e itens. Cardápio, site e (futuro) bio leem daqui.
 const LOJA = {
   nome: "Doceria Água na Boca",
   whatsapp: "5565996112977",
