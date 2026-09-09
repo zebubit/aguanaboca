@@ -12,8 +12,8 @@ const CARDAPIO = [
   {
     categoria: "Destaques",
     itens: [
-      { nome: "Bolo no Pote Brownie com Mousse Meio Amargo", desc: "Brownie intercalado com mousse de chocolate meio amargo e calda de ganache. 230ml.", serve: "1 pessoa", preco: 15.00, precoDe: 25.00 },
-      { nome: "Vulcão Duo", desc: "Massa de baunilha e cacau, molhadinha, com calda de leite Ninho e brigadeiro. Deve manter refrigerado.", serve: "4 a 8 pessoas", preco: 69.99, precoDe: 100.00 }
+      { nome: "Bolo no Pote Brownie com Mousse Meio Amargo", desc: "Brownie intercalado com mousse de chocolate meio amargo e calda de ganache. 230ml.", serve: "1 pessoa", preco: 15.00, precoDe: 25.00, img: "img/bolo-no-pote.jpg" },
+      { nome: "Vulcão Duo", desc: "Massa de baunilha e cacau, molhadinha, com calda de leite Ninho e brigadeiro. Deve manter refrigerado.", serve: "4 a 8 pessoas", preco: 69.99, precoDe: 100.00, img: "img/vulcao-duo.jpg" }
     ]
   },
   {
@@ -40,14 +40,14 @@ const CARDAPIO = [
       { nome: "Fatia Matilda", desc: "Bolo chocolatudo! Pra quem ama muito brigadeiro.", preco: 38.90, img: "img/fatia-chocolate-1.jpg" },
       { nome: "Fatia Suspiro Morango e Nata", desc: "", preco: 38.98, img: "img/fatia-morango-prato.jpg" },
       { nome: "Fatia Dois Amores", desc: "Massa de chocolate, com recheio de brigadeiro e leite Ninho. 330g.", serve: "1 pessoa", preco: 38.90, img: "img/fatia-chocolate-2.jpg" },
-      { nome: "Fatia Floresta Negra", desc: "Massa de chocolate, brigadeiro cremoso e mousse de chocolate meio amargo intercalado com cerejas (só uma camada leva cereja). 230g.", preco: 38.90 }
+      { nome: "Fatia Floresta Negra", desc: "Massa de chocolate, brigadeiro cremoso e mousse de chocolate meio amargo intercalado com cerejas (só uma camada leva cereja). 230g.", preco: 38.90, img: "img/fatia-floresta-negra.jpg" }
     ]
   },
   {
     categoria: "Queridinhos",
     itens: [
       { nome: "Travessa Morango com Ganache", desc: "Camadas de Ninho, chocolate e morangos.", preco: 180.00, img: "img/travessa-morango-ganache.jpg" },
-      { nome: "Travessa Nuvem de Morango", desc: "Serve em média 10 pessoas. Não contém massa de bolo.", preco: 180.00, img: "img/bolo-morango-completo.jpg" }
+      { nome: "Travessa Nuvem de Morango", desc: "Serve em média 10 pessoas. Não contém massa de bolo.", preco: 180.00, img: "img/travessa-nuvem-morango.jpg" }
     ]
   },
   {
@@ -61,7 +61,7 @@ const CARDAPIO = [
   {
     categoria: "Nossos Queridinhos",
     itens: [
-      { nome: "Pão de Mel", desc: "Massa fofinha, banhado na cobertura de chocolate.", preco: 20.00 }
+      { nome: "Pão de Mel", desc: "Massa fofinha, banhado na cobertura de chocolate.", preco: 20.00, img: "img/pao-de-mel.jpg" }
     ]
   },
   {
@@ -89,21 +89,21 @@ const CARDAPIO = [
   {
     categoria: "Verrine - Copo da Felicidade",
     itens: [
-      { nome: "Copo da Felicidade Banoffe", desc: "Biscoito, doce de leite, banana, calda caramelizada e creme de leite Ninho. 250ml.", serve: "1 pessoa", preco: 28.00 },
-      { nome: "Copo da Felicidade Bombom de Uva", desc: "Uva inteira, recheio de Ninho, musse de Ninho e cobertura de chocolate com ganache.", preco: 28.00 }
+      { nome: "Copo da Felicidade Banoffe", desc: "Biscoito, doce de leite, banana, calda caramelizada e creme de leite Ninho. 250ml.", serve: "1 pessoa", preco: 28.00, img: "img/copo-felicidade.jpg" },
+      { nome: "Copo da Felicidade Bombom de Uva", desc: "Uva inteira, recheio de Ninho, musse de Ninho e cobertura de chocolate com ganache.", preco: 28.00, img: "img/copo-felicidade.jpg" }
     ]
   },
   {
     categoria: "Bolo no Pote",
     itens: [
-      { nome: "Bolo no Pote Brigadeiro", desc: "Massa de cacau com recheio cremoso de brigadeiro. 230ml.", serve: "1 pessoa", preco: 25.00 },
-      { nome: "Bolo no Pote Brownie com Mousse Meio Amargo", desc: "Brownie intercalado com mousse de chocolate meio amargo e calda de ganache. 230ml.", serve: "1 pessoa", preco: 15.00, precoDe: 25.00 }
+      { nome: "Bolo no Pote Brigadeiro", desc: "Massa de cacau com recheio cremoso de brigadeiro. 230ml.", serve: "1 pessoa", preco: 25.00, img: "img/bolo-no-pote.jpg" },
+      { nome: "Bolo no Pote Brownie com Mousse Meio Amargo", desc: "Brownie intercalado com mousse de chocolate meio amargo e calda de ganache. 230ml.", serve: "1 pessoa", preco: 15.00, precoDe: 25.00, img: "img/bolo-no-pote.jpg" }
     ]
   },
   {
     categoria: "Cup Cake",
     itens: [
-      { nome: "Cup Cake Dois Amores", desc: "Massa de cacau, com recheio de leite Ninho e brigadeiro.", serve: "1 pessoa", preco: 25.00 }
+      { nome: "Cup Cake Dois Amores", desc: "Massa de cacau, com recheio de leite Ninho e brigadeiro.", serve: "1 pessoa", preco: 25.00, img: "img/cupcake.jpg" }
     ]
   },
   {

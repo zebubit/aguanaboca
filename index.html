@@ -100,6 +100,16 @@
   .setas{display:flex;gap:10px;margin-top:14px}
   .seta{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--line);background:#fff;font-size:17px;cursor:pointer;color:var(--pink-dark)}
 
+  /* REELS */
+  .reels-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+  @media(max-width:760px){.reels-grid{grid-template-columns:repeat(2,1fr)}}
+  .reel-card{position:relative;display:block;aspect-ratio:9/16;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+  .reel-card img{width:100%;height:100%;object-fit:cover}
+  .reel-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(58,20,32,0) 55%,rgba(58,20,32,.55) 100%)}
+  .reel-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 6px 16px rgba(0,0,0,.25)}
+  .reel-play svg{width:20px;height:20px;fill:var(--pink-dark);margin-left:3px}
+  .reels-cta{text-align:center;margin-top:24px}
+
   /* PROVA SOCIAL */
   .prova-grid{display:flex;gap:24px;flex-wrap:wrap;margin-top:30px}
   .prova-item{flex:1 1 200px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;text-align:center;box-shadow:var(--shadow)}
@@ -172,9 +182,9 @@
         <p class="lead">Cada morango cravejado, cada fatia, cada kit sai da nossa loja no Jardim das Américas pensado pra ser um mimo, de aniversário, de "só porque sim", ou pra fechar o dia com chave de ouro.</p>
       </div>
       <div class="sobre-fotos" data-reveal>
-        <img class="tall" src="img/equipe-3.jpg" alt="Equipe Água na Boca">
+        <img class="tall" src="img/equipe-3.jpg" alt="A família por trás da Água na Boca">
         <div class="col2">
-          <img class="short" src="img/morango-do-amor-2.jpg" alt="Morango do amor">
+          <img class="short" src="img/dona-loja.jpg" alt="Atendimento na loja da Água na Boca">
           <img class="short" src="img/vitrine-geladeira.jpg" alt="Vitrine de morangos cravejados">
         </div>
       </div>
@@ -263,11 +273,43 @@
         <img src="img/entrega-lifestyle.jpg" alt="">
         <img src="img/mordida-2.jpg" alt="">
         <img src="img/brownie-sorvete.jpg" alt="">
+        <img src="img/fachada.jpg" alt="">
+        <img src="img/vitrine-loja-2.jpg" alt="">
+        <img src="img/ambiente-neon.jpg" alt="">
+        <img src="img/travessa-nuvem-morango.jpg" alt="">
       </div>
       <div class="setas">
         <button class="seta" onclick="mover(-1)">←</button>
         <button class="seta" onclick="mover(1)">→</button>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="reels">
+  <div class="container">
+    <div class="eyebrow">Bastidores</div>
+    <h2 class="titulo-secao">Vídeos de <span class="script">quem faz</span></h2>
+    <div class="reels-grid" data-reveal>
+      <a class="reel-card" href="https://www.instagram.com/p/Dc1OXHHxV9Y/" target="_blank" rel="noopener">
+        <img src="img/reel-1-capa.jpg" alt="Reel Água na Boca">
+        <span class="reel-play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
+      </a>
+      <a class="reel-card" href="https://www.instagram.com/p/Da8ey2tRUL5/" target="_blank" rel="noopener">
+        <img src="img/reel-2-capa.jpg" alt="Reel Água na Boca">
+        <span class="reel-play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
+      </a>
+      <a class="reel-card" href="https://www.instagram.com/p/Dcd_OmfxlOg/" target="_blank" rel="noopener">
+        <img src="img/reel-3-capa.jpg" alt="Reel Água na Boca">
+        <span class="reel-play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
+      </a>
+      <a class="reel-card" href="https://www.instagram.com/p/DbrAIzhxsn-/" target="_blank" rel="noopener">
+        <img src="img/reel-4-capa.jpg" alt="Reel Água na Boca">
+        <span class="reel-play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
+      </a>
+    </div>
+    <div class="reels-cta">
+      <a class="btn btn-primario" href="https://www.instagram.com/aguanaboca.cuiaba" target="_blank" rel="noopener">Seguir no Instagram</a>
     </div>
   </div>
 </section>
@@ -326,7 +368,7 @@
 
 <footer>
   <div class="container">
-    Doceria Água na Boca · Jardim das Américas, Cuiabá - MT<br>
+    © 2026 Doceria Água na Boca · Jardim das Américas, Cuiabá - MT<br>
     Desenvolvido por <a href="https://zebubit.com.br" target="_blank" rel="noopener">Zebubit Assessoria</a>
   </div>
 </footer>
